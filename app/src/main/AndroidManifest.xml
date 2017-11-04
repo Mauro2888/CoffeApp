@@ -23,7 +23,7 @@
         <activity android:name=".AlimentiActivity"/>
         <provider
             android:authorities="com.order.coffee.coffeapp"
-            android:name=".DatabaseProdotti.ContentProvider"
+            android:name=".Database.ContentProvider"
             android:exported="true"></provider>
     </application>
 

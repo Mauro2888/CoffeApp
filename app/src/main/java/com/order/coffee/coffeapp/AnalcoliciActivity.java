@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 
-import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
+import com.order.coffee.coffeapp.Database.Contract;
 
 public class AnalcoliciActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

@@ -9,7 +9,7 @@
     tools:context="com.order.coffee.coffeapp.MainActivity">
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:textAlignment="center"
         android:id="@+id/textTitle"
         style="@style/Base.TextAppearance.AppCompat.Title"

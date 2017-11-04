@@ -2,20 +2,14 @@ package com.order.coffee.coffeapp;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
+import com.order.coffee.coffeapp.Database.Contract;
 
 public class CaffetteriaActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

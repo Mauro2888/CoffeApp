@@ -1,5 +1,6 @@
 package com.order.coffee.coffeapp.Adapters;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -9,12 +10,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
+import com.order.coffee.coffeapp.Database.Contract;
 import com.order.coffee.coffeapp.R;
 
 
 
 public class CursorAdapter extends android.widget.CursorAdapter  {
+
 
     public CursorAdapter(Context context, Cursor c) {
         super(context, c);
@@ -63,6 +65,8 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
         });
 
 
+
+
         int nome = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_NOME);
         int prezzo = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_PREZZO);
         int category = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_CATEGORY);
@@ -74,5 +78,13 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
         mTitle.setText(nomeProdotti);
         mPrezzo.setText(prezzoProdotti);
         mCategory.setText(cursor.getString(category));
+
+        ContentValues contentValuesOrdine = new ContentValues();
+        contentValuesOrdine.put(Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO,nome);
+        contentValuesOrdine.put(Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO,prezzo);
+        contentValuesOrdine.put(Contract.OrdindeDataBase.COLUMN_QUANTITA, String.valueOf(setQuantity));
+        context.getContentResolver().insert(Contract.URI_CONTENT_ORDINI,contentValuesOrdine);
+        Toast.makeText(context, "Elementi Aggiunti", Toast.LENGTH_SHORT).show();
+
     }
 }

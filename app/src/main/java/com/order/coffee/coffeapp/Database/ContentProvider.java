@@ -1,12 +1,10 @@
-package com.order.coffee.coffeapp.DatabaseProdotti;
+package com.order.coffee.coffeapp.Database;
 
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,9 +21,15 @@ public class ContentProvider extends android.content.ContentProvider {
     public static final int PRODOTTI_ID = 100;
     public static final int PRODOTTI = 101;
 
+    public static final int ORDINI_ID = 200;
+    public static final int ORDINI = 201;
+
     static {
         mUriMatcher.addURI(Contract.AUTHORITY,Contract.PATH_TABLE + "/#",PRODOTTI_ID);
         mUriMatcher.addURI(Contract.AUTHORITY,Contract.PATH_TABLE,PRODOTTI);
+
+        mUriMatcher.addURI(Contract.AUTHORITY,Contract.PATH_TABLE_ORDINI + "/#",ORDINI_ID);
+        mUriMatcher.addURI(Contract.AUTHORITY,Contract.PATH_TABLE_ORDINI,ORDINI);
     }
 
 
@@ -50,6 +54,15 @@ public class ContentProvider extends android.content.ContentProvider {
                 selection = Contract.ProdottiDataBase._ID + "=?";
                 selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 mCursor = mSQLite.query(Contract.ProdottiDataBase.TABLE_NAME,projector,selection,selectionArgs,null,null,sortBy);
+                break;
+
+            case ORDINI:
+                mCursor = mSQLite.query(Contract.OrdindeDataBase.TABLE_NAME,projector,selection,selectionArgs,null,null,sortBy);
+                break;
+            case ORDINI_ID:
+                selection = Contract.OrdindeDataBase._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                mCursor = mSQLite.query(Contract.OrdindeDataBase.TABLE_NAME,projector,selection,selectionArgs,null,null,sortBy);
                 break;
                 default:
                     throw new IllegalArgumentException("Errore Query " + uri);
@@ -81,9 +94,18 @@ public class ContentProvider extends android.content.ContentProvider {
                     throw new IllegalArgumentException("Errore Insert " +uri);
                 }
                 break;
+            case ORDINI:
+                InsertId = mSQLite.insert(Contract.OrdindeDataBase.TABLE_NAME,null,contentValues);
+                if (InsertId > 0){
+                    mUri = ContentUris.withAppendedId(Contract.URI_CONTENT_ORDINI,InsertId);
+                }else {
+                    throw new IllegalArgumentException("Errore Insert Ordini " + uri);
+                }
+                break;
             default:
                 throw new IllegalArgumentException("Errore" +uri);
         }
+
         getContext().getContentResolver().notifyChange(uri,null);
         return mUri;
     }

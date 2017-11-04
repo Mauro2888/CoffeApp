@@ -1,4 +1,4 @@
-package com.order.coffee.coffeapp.DatabaseProdotti;
+package com.order.coffee.coffeapp.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,17 +26,27 @@ public class Helper extends SQLiteOpenHelper {
                 Contract.ProdottiDataBase.COLUMN_PREZZO + " INTEGER NOT NULL," +
                 Contract.ProdottiDataBase.COLUMN_CATEGORY + " TEXT NOT NULL " +
                 " ) ";
+
+        String CREATE_DATABASE_ORDINI = " CREATE TABLE IF NOT EXISTS " + Contract.OrdindeDataBase.TABLE_NAME + " ( " +
+                Contract.OrdindeDataBase._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO + " TEXT, " +
+                Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO + " TEXT, " +
+                Contract.OrdindeDataBase.COLUMN_QUANTITA + "INTEGER, " +
+                Contract.OrdindeDataBase.COLUMN_ORDINE_TOTALE + " INTEGER " +
+                " ) ";
+
         sqLiteDatabase.execSQL(CREATE_DATABASE);
+        sqLiteDatabase.execSQL(CREATE_DATABASE_ORDINI);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(DeleteData());
+        String delete_prodotti = " DROP TABLE IF EXISTS " + Contract.ProdottiDataBase.TABLE_NAME;
+        String delete_ordini = " DROP TABLE IF EXISTS " + Contract.OrdindeDataBase.TABLE_NAME;
+        sqLiteDatabase.execSQL(delete_prodotti);
+        sqLiteDatabase.execSQL(delete_ordini);
         onCreate(sqLiteDatabase);
     }
 
-    public String DeleteData(){
-        String delete = " DROP TABLE IF EXISTS " + Contract.ProdottiDataBase.TABLE_NAME;
-        return delete;
-    }
+
 }

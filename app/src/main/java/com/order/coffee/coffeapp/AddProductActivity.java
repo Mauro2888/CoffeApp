@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
+import com.order.coffee.coffeapp.Database.Contract;
 
 import java.util.ArrayList;
 
