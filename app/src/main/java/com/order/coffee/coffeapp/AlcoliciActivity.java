@@ -2,22 +2,16 @@ package com.order.coffee.coffeapp;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
 
-public class CaffetteriaActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class AlcoliciActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     ListView mListView;
     CursorAdapter mCursorAdapter;
@@ -26,9 +20,9 @@ public class CaffetteriaActivity extends AppCompatActivity implements LoaderMana
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caffetteria);
+        setContentView(R.layout.activity_alcolici);
 
-        mListView = findViewById(R.id.listView_caffetteria);
+        mListView = findViewById(R.id.listView_alcolici);
         mCursorAdapter = new com.order.coffee.coffeapp.Adapters.CursorAdapter(this,null);
         mListView.setAdapter(mCursorAdapter);
 
@@ -46,7 +40,7 @@ public class CaffetteriaActivity extends AppCompatActivity implements LoaderMana
                 Contract.ProdottiDataBase.COLUMN_PREZZO,
                 Contract.ProdottiDataBase.COLUMN_CATEGORY
         };
-        return new CursorLoader(CaffetteriaActivity.this,Contract.URI_CONTENT,projector,Contract.ProdottiDataBase.COLUMN_CATEGORY + " = 'Caffetteria'",null,null);
+        return new CursorLoader(AlcoliciActivity.this,Contract.URI_CONTENT,projector,Contract.ProdottiDataBase.COLUMN_CATEGORY + " = 'Alcolici'",null,null);
     }
 
     @Override

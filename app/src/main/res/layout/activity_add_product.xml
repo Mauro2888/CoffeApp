@@ -28,6 +28,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:hint="Seleziona la Categoria prodotto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.AppCompatSpinner>
+
     <Button
         android:id="@+id/btn_add"
         android:layout_gravity="bottom"

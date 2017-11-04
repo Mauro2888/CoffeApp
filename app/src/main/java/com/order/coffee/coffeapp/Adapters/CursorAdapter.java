@@ -7,13 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.order.coffee.coffeapp.DatabaseProdotti.Contract;
 import com.order.coffee.coffeapp.R;
 
 
 
-public class CursorAdapter extends android.widget.CursorAdapter {
+public class CursorAdapter extends android.widget.CursorAdapter  {
 
     public CursorAdapter(Context context, Cursor c) {
         super(context, c);
@@ -25,10 +26,13 @@ public class CursorAdapter extends android.widget.CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, final Cursor cursor) {
+
+
 
         TextView mTitle = view.findViewById(R.id.nome_layout);
         TextView mPrezzo = view.findViewById(R.id.prezzo_layout);
+        TextView mCategory = view.findViewById(R.id.category);
         final TextView mQuantity = view.findViewById(R.id.quantity);
         final Button mAddQuantity = view.findViewById(R.id.addQuantity);
         Button mSubtrackQuantity = view.findViewById(R.id.subtractQuantity);
@@ -61,12 +65,14 @@ public class CursorAdapter extends android.widget.CursorAdapter {
 
         int nome = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_NOME);
         int prezzo = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_PREZZO);
+        int category = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_CATEGORY);
 
         String nomeProdotti = cursor.getString(nome);
         String prezzoProdotti = cursor.getString(prezzo);
 
+
         mTitle.setText(nomeProdotti);
         mPrezzo.setText(prezzoProdotti);
-
+        mCategory.setText(cursor.getString(category));
     }
 }

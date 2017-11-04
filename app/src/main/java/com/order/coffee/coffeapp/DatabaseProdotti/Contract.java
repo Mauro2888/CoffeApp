@@ -20,5 +20,6 @@ public class Contract {
         public final static String TABLE_NAME = "prodotti";
         public final static String COLUMN_NOME = "nome";
         public final static String COLUMN_PREZZO = "prezzo";
+        public final static String COLUMN_CATEGORY = "categoria";
     }
 }

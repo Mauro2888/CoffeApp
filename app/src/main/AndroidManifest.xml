@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".CaffetteriaActivity" />
-        <activity android:name=".AddProductActivity"></activity>
+        <activity android:name=".AlcoliciActivity" />
+        <activity android:name=".AddProductActivity" />
+        <activity android:name=".AnalcoliciActivity"/>
+        <activity android:name=".AlimentiActivity"/>
         <provider
             android:authorities="com.order.coffee.coffeapp"
             android:name=".DatabaseProdotti.ContentProvider"

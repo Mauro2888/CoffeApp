@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/colorBackground"
-    android:orientation="vertical"
     android:padding="10dp"
     android:layout_height="match_parent"
     tools:context="com.order.coffee.coffeapp.MainActivity">
 
+    <TextView
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:id="@+id/textTitle"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:hint="Caffetteria Order Menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textTitle"
         android:id="@+id/recycler_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -18,9 +27,11 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Fab_add_product"
         android:onClick="AddProduct"
-        android:layout_width="match_parent"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:src="@drawable/ic_add_product"
         app:fabSize="normal" />
-</LinearLayout>
+</RelativeLayout>

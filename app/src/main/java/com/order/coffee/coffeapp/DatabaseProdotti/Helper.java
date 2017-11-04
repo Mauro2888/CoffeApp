@@ -20,16 +20,19 @@ public class Helper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String CREATE_DATABASE = " CREATE TABLE " + Contract.ProdottiDataBase.TABLE_NAME + " ( " +
+        String CREATE_DATABASE = " CREATE TABLE IF NOT EXISTS " + Contract.ProdottiDataBase.TABLE_NAME + " ( " +
                 Contract.ProdottiDataBase._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Contract.ProdottiDataBase.COLUMN_NOME + " TEXT NOT NULL, " +
-                Contract.ProdottiDataBase.COLUMN_PREZZO + " INTEGER NOT NULL" + " ) ";
+                Contract.ProdottiDataBase.COLUMN_PREZZO + " INTEGER NOT NULL," +
+                Contract.ProdottiDataBase.COLUMN_CATEGORY + " TEXT NOT NULL " +
+                " ) ";
         sqLiteDatabase.execSQL(CREATE_DATABASE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(DeleteData());
+        onCreate(sqLiteDatabase);
     }
 
     public String DeleteData(){

@@ -90,7 +90,24 @@ public class ContentProvider extends android.content.ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        mSQLite = mHelper.getWritableDatabase();
+        int delete;
+        int match = mUriMatcher.match(uri);
+        switch (match){
+            case PRODOTTI:
+                delete = mSQLite.delete(Contract.ProdottiDataBase.TABLE_NAME,null,null);
+                break;
+            case PRODOTTI_ID:
+                selection = Contract.ProdottiDataBase._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                delete = mSQLite.delete(Contract.ProdottiDataBase.TABLE_NAME,selection,selectionArgs);
+                break;
+                default:
+                    throw new IllegalArgumentException("Errore delete " + uri);
+        }
+
+        getContext().getContentResolver().notifyChange(uri,null);
+        return delete;
     }
 
     @Override

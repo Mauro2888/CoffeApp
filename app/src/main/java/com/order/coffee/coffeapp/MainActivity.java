@@ -63,6 +63,19 @@ public class MainActivity extends AppCompatActivity implements ClickItem {
             case 0:
                 Intent caffetteriaActivity = new Intent(MainActivity.this,CaffetteriaActivity.class);
                 startActivity(caffetteriaActivity);
+                break;
+            case 1:
+                Intent alcoliciActivity = new Intent(MainActivity.this,AlcoliciActivity.class);
+                startActivity(alcoliciActivity);
+                break;
+            case 2:
+            Intent analcoliciActivity = new Intent(MainActivity.this,AnalcoliciActivity.class);
+            startActivity(analcoliciActivity);
+                break;
+            case 3:
+                Intent alimentiActvity = new Intent(MainActivity.this,AlimentiActivity.class);
+                startActivity(alimentiActvity);
+                break;
         }
     }
 
