@@ -8,17 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.order.coffee.coffeapp.Database.Contract;
 import com.order.coffee.coffeapp.R;
 
 
+public class CursorAdapterOrdini extends android.widget.CursorAdapter  {
 
-public class CursorAdapter extends android.widget.CursorAdapter  {
 
-
-    public CursorAdapter(Context context, Cursor c) {
+    public CursorAdapterOrdini(Context context, Cursor c) {
         super(context, c);
     }
 
@@ -29,7 +27,7 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
 
     @Override
     public void bindView(View view, final Context context, final Cursor cursor) {
-        ContentValues Insert = new ContentValues();
+
 
         TextView mTitle = view.findViewById(R.id.nome_layout);
         TextView mPrezzo = view.findViewById(R.id.prezzo_layout);
@@ -48,9 +46,6 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
             public void onClick(View view) {
                 setQuantity[0] = setQuantity[0] + 1;
                 mQuantity.setText(String.valueOf(setQuantity[0]) );
-                ContentValues Insert = new ContentValues();
-                Insert.put(Contract.OrdindeDataBase.COLUMN_QUANTITA, String.valueOf(setQuantity));
-                context.getContentResolver().insert(Contract.URI_CONTENT_ORDINI,Insert);
 
             }
         });
@@ -62,19 +57,15 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
                 mQuantity.setText(String.valueOf(setQuantity[0]));
                 if (setQuantity[0] < 0){
                     setQuantity[0] = 0;
-                    mQuantity.setText(String.valueOf(setQuantity[0]));
-                    ContentValues Insert = new ContentValues();
-                    Insert.put(Contract.OrdindeDataBase.COLUMN_QUANTITA, String.valueOf(setQuantity));
-                    context.getContentResolver().insert(Contract.URI_CONTENT_ORDINI,Insert);
 
                 }
             }
         });
 
 
-        int nome = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_NOME);
-        int prezzo = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_PREZZO);
-        int category = cursor.getColumnIndexOrThrow(Contract.ProdottiDataBase.COLUMN_CATEGORY);
+        int nome = cursor.getColumnIndexOrThrow(Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO);
+        int prezzo = cursor.getColumnIndexOrThrow(Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO);
+        int category = cursor.getColumnIndexOrThrow(Contract.OrdindeDataBase.COLUMN_QUANTITA);
 
         String nomeProdotti = cursor.getString(nome);
         String prezzoProdotti = cursor.getString(prezzo);

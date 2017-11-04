@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements ClickItem {
         mListProducts.add(new ProductsMainModel("Alcolici",R.drawable.ic_alcolici));
         mListProducts.add(new ProductsMainModel("Analcolici",R.drawable.ic_analcolici));
         mListProducts.add(new ProductsMainModel("Alimenti",R.drawable.ic_food));
+        mListProducts.add(new ProductsMainModel("Cassa",R.drawable.ic_cassa));
 
         mRecyclerMain = findViewById(R.id.recycler_main);
         mLayoutManger = new GridLayoutManager(this,calculateNoOfColumns(getBaseContext()));
@@ -75,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements ClickItem {
             case 3:
                 Intent alimentiActvity = new Intent(MainActivity.this,AlimentiActivity.class);
                 startActivity(alimentiActvity);
+                break;
+            case 4:
+                Intent cassaActvity = new Intent(MainActivity.this,CassaActivity.class);
+                startActivity(cassaActvity);
                 break;
         }
     }

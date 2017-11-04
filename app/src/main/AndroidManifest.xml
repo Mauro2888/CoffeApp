@@ -21,6 +21,7 @@
         <activity android:name=".AddProductActivity" />
         <activity android:name=".AnalcoliciActivity"/>
         <activity android:name=".AlimentiActivity"/>
+        <activity android:name=".CassaActivity"/>
         <provider
             android:authorities="com.order.coffee.coffeapp"
             android:name=".Database.ContentProvider"
