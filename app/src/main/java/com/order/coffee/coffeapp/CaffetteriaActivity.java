@@ -1,6 +1,7 @@
 package com.order.coffee.coffeapp;
 
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -43,10 +44,7 @@ public class CaffetteriaActivity extends AppCompatActivity implements LoaderMana
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-
         mCursorAdapter.swapCursor(cursor);
-
-
 
     }
 

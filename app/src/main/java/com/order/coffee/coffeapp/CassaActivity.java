@@ -2,21 +2,17 @@ package com.order.coffee.coffeapp;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.order.coffee.coffeapp.Adapters.CursorAdapterOrdini;
 import com.order.coffee.coffeapp.Database.Contract;
@@ -57,7 +53,7 @@ public class CassaActivity extends AppCompatActivity implements LoaderManager.Lo
                 Contract.OrdindeDataBase._ID,
                 Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO,
                 Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO,
-                Contract.OrdindeDataBase.COLUMN_QUANTITA
+                Contract.OrdindeDataBase.COLUMN_QUANTITA_PRODOTTO
         };
         return new CursorLoader(CassaActivity.this,Contract.URI_CONTENT_ORDINI,projector,null,null,null);
     }

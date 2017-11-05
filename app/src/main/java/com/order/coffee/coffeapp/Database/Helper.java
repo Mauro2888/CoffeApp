@@ -31,7 +31,7 @@ public class Helper extends SQLiteOpenHelper {
                 Contract.OrdindeDataBase._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO + " TEXT, " +
                 Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO + " TEXT, " +
-                Contract.OrdindeDataBase.COLUMN_QUANTITA + " INTEGER, " +
+                Contract.OrdindeDataBase.COLUMN_QUANTITA_PRODOTTO + " INTEGER, " +
                 Contract.OrdindeDataBase.COLUMN_ORDINE_TOTALE + " INTEGER " +
                 " ) ";
 

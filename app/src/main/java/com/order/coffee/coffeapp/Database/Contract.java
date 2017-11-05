@@ -31,7 +31,7 @@ public class Contract {
         public final static String TABLE_NAME = "ordini";
         public final static String COLUMN_NOME_PRODOTTO = "nome_prodotto";
         public final static String COLUMN_PREZZO_PRODOTTO = "prezzo_prodotto";
-        public final static String COLUMN_QUANTITA = "quantita_prodotto";
+        public final static String COLUMN_QUANTITA_PRODOTTO = "quantita_prodotto";
         public final static String COLUMN_ORDINE_TOTALE = "ordine_totale";
     }
 }

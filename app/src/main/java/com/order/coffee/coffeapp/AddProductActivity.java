@@ -74,7 +74,7 @@ public class AddProductActivity extends AppCompatActivity {
                 getContentResolver().insert(Contract.URI_CONTENT,mContentvalues);
 
                 ContentValues quantity = new ContentValues();
-                quantity.put(Contract.OrdindeDataBase.COLUMN_QUANTITA,0);
+                quantity.put(Contract.OrdindeDataBase.COLUMN_QUANTITA_PRODOTTO,0);
                 getContentResolver().insert(Contract.URI_CONTENT_ORDINI,quantity);
 
 

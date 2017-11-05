@@ -1,11 +1,10 @@
 package com.order.coffee.coffeapp.Adapters;
 
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +41,7 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
         Button mSubtrackQuantity = view.findViewById(R.id.subtractQuantity);
         FloatingActionButton addOrder = view.findViewById(R.id.Fab_add_order);
         final ContentValues mOrder = new ContentValues();
+
         final int[] setQuantity = {0};
 
         mQuantity.setText(String.valueOf(0));
@@ -85,12 +85,14 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
 
         Toast.makeText(context, "" + mQuantity.getText().toString(), Toast.LENGTH_SHORT).show();
 
+        final int posCursor = cursor.getPosition();
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cursor.moveToPosition(posCursor);
                 mOrder.put(Contract.OrdindeDataBase.COLUMN_NOME_PRODOTTO,nomeProdotti);
                 mOrder.put(Contract.OrdindeDataBase.COLUMN_PREZZO_PRODOTTO,prezzoProdotti);
-                mOrder.put(Contract.OrdindeDataBase.COLUMN_QUANTITA,mQuantity.getText().toString());
+                mOrder.put(Contract.OrdindeDataBase.COLUMN_QUANTITA_PRODOTTO,String.valueOf(setQuantity[0]));
                 context.getContentResolver().insert(Contract.URI_CONTENT_ORDINI,mOrder);
 
             }
