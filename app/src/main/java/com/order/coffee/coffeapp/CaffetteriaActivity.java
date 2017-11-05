@@ -25,8 +25,6 @@ public class CaffetteriaActivity extends AppCompatActivity implements LoaderMana
         mListView = findViewById(R.id.listView_caffetteria);
         mCursorAdapter = new com.order.coffee.coffeapp.Adapters.CursorAdapter(this,null);
         mListView.setAdapter(mCursorAdapter);
-
-
         getLoaderManager().initLoader(0,null,this);
     }
 
@@ -47,6 +45,8 @@ public class CaffetteriaActivity extends AppCompatActivity implements LoaderMana
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 
         mCursorAdapter.swapCursor(cursor);
+
+
 
     }
 

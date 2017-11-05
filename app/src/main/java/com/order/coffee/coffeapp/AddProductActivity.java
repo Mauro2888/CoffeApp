@@ -72,6 +72,12 @@ public class AddProductActivity extends AppCompatActivity {
                 mContentvalues.put(Contract.ProdottiDataBase.COLUMN_PREZZO,mEditPrezzo.getText().toString());
                 mContentvalues.put(Contract.ProdottiDataBase.COLUMN_CATEGORY,get);
                 getContentResolver().insert(Contract.URI_CONTENT,mContentvalues);
+
+                ContentValues quantity = new ContentValues();
+                quantity.put(Contract.OrdindeDataBase.COLUMN_QUANTITA,0);
+                getContentResolver().insert(Contract.URI_CONTENT_ORDINI,quantity);
+
+
                 Toast.makeText(AddProductActivity.this, "Dati inseriti", Toast.LENGTH_SHORT).show();
                 finish();
             }

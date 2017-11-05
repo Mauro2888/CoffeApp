@@ -8,11 +8,11 @@
     android:layout_height="wrap_content">
 
     <ListView
-        android:clickable="true"
         android:id="@+id/listView_caffetteria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="match_parent"
+        android:clickable="true"></ListView>
+
 
 
 

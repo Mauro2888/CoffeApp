@@ -124,6 +124,15 @@ public class ContentProvider extends android.content.ContentProvider {
                 selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 delete = mSQLite.delete(Contract.ProdottiDataBase.TABLE_NAME,selection,selectionArgs);
                 break;
+
+            case ORDINI:
+                delete = mSQLite.delete(Contract.OrdindeDataBase.TABLE_NAME,null,null);
+                break;
+            case ORDINI_ID:
+                selection = Contract.OrdindeDataBase._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                delete = mSQLite.delete(Contract.OrdindeDataBase.TABLE_NAME,selection,selectionArgs);
+                break;
                 default:
                     throw new IllegalArgumentException("Errore delete " + uri);
         }
@@ -134,6 +143,29 @@ public class ContentProvider extends android.content.ContentProvider {
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        mSQLite = mHelper.getWritableDatabase();
+        int update = 0;
+        int match = mUriMatcher.match(uri);
+        switch (match){
+            case PRODOTTI:
+                update = mSQLite.update(Contract.PATH_TABLE,contentValues,null,null);
+                break;
+            case PRODOTTI_ID:
+                selection = Contract.ProdottiDataBase._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                update = mSQLite.update(Contract.PATH_TABLE,contentValues,selection,selectionArgs);
+                break;
+            case ORDINI:
+                update = mSQLite.update(Contract.PATH_TABLE_ORDINI,contentValues,null,null);
+                break;
+            case ORDINI_ID:
+                selection = Contract.ProdottiDataBase._ID + "=?";
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                update = mSQLite.update(Contract.PATH_TABLE_ORDINI,contentValues,selection,selectionArgs);
+                break;
+            
+        }
+        getContext().getContentResolver().notifyChange(uri,null);
+        return update;
     }
 }

@@ -84,20 +84,6 @@ public class MainActivity extends AppCompatActivity implements ClickItem {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.add:
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void AddProduct(View view) {
         Intent addProduct = new Intent(MainActivity.this,AddProductActivity.class);
