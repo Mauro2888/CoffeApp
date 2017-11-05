@@ -36,7 +36,7 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
         final TextView mTitle = view.findViewById(R.id.nome_layout);
         TextView mPrezzo = view.findViewById(R.id.prezzo_layout);
         TextView mCategory = view.findViewById(R.id.category);
-        final EditText mQuantity = view.findViewById(R.id.quantity);
+        final TextView mQuantity = view.findViewById(R.id.quantity);
         final Button mAddQuantity = view.findViewById(R.id.addQuantity);
         Button mSubtrackQuantity = view.findViewById(R.id.subtractQuantity);
         FloatingActionButton addOrder = view.findViewById(R.id.Fab_add_order);
@@ -52,7 +52,6 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
             public void onClick(View view) {
                 setQuantity[0] = setQuantity[0] + 1;
                 mQuantity.setText(String.valueOf(setQuantity[0]) );
-                Toast.makeText(context, "" + mQuantity.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -64,7 +63,7 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
                 if (setQuantity[0] < 0){
                     setQuantity[0] = 0;
                     mQuantity.setText(String.valueOf(setQuantity[0]));
-                    Toast.makeText(context, "" + mQuantity.getText().toString(), Toast.LENGTH_SHORT).show();
+
 
                 }
             }
@@ -83,7 +82,6 @@ public class CursorAdapter extends android.widget.CursorAdapter  {
         mPrezzo.setText(prezzoProdotti);
         mCategory.setText(cursor.getString(category));
 
-        Toast.makeText(context, "" + mQuantity.getText().toString(), Toast.LENGTH_SHORT).show();
 
         final int posCursor = cursor.getPosition();
         addOrder.setOnClickListener(new View.OnClickListener() {
